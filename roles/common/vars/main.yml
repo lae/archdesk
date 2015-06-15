@@ -1,8 +1,4 @@
 ---
-common_pkgs:
-  - vim
-  - sysstat
-  - 
 common_base_devel_pkgs:
   - autoconf
   - automake

@@ -1,0 +1,18 @@
+---
+- include_vars: ssh_key.yml
+
+- name: Copy EdDSA SSH key
+  copy:
+    content: "{{ common_ssh_privkey }}"
+    dest: "~{{ common_user }}/.ssh/id_ed25519"
+    mode: 0600
+    backup: yes
+  sudo_user: "{{ common_user }}"
+
+- name: Copy EdDSA SSH pubkey
+  copy:
+    content: "{{ common_ssh_pubkey }}"
+    dest: "~{{ common_user }}/.ssh/id_ed25519.pub"
+    mode: 0600
+    backup: yes
+  sudo_user: "{{ common_user }}"

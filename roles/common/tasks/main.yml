@@ -8,3 +8,4 @@
 - include: configure_ntp.yml tags=ntp
 - include: configure_vim.yml tags=vim,dev
 - include: configure_development_environment.yml tags=dev
+- include: add_sshkey.yml tags=ssh
