@@ -5,3 +5,15 @@
     - lightdm
     - lightdm-gtk-greeter
   tags: desktop
+
+- name: Configure LightDM
+  template: src=lightdm.conf.j2 dest=/etc/lightdm/lightdm.conf
+  tags: desktop
+
+- name: Configure LightDM Greeter
+  template: src=lightdm-gtk-greeter.conf.j2 dest=/etc/lightdm/lightdm-gtk-greeter.conf
+  tags: desktop
+
+- name: Enable and start LightDM
+  service: name=lightdm state=started enabled=yes
+  tags: desktop
