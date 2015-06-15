@@ -1,0 +1,17 @@
+---
+- name: Install NVidia 340.xx drivers
+  pacman: name={{ item }} state=latest
+  with_items:
+    - nvidia-340xx
+    - nvidia-340xx-libgl
+    - nvidia-340xx-utils
+    - opencl-nvidia-340xx
+    - lib32-nvidia-340xx-libgl
+    - lib32-nvidia-340xx-utils
+  tags:
+    - desktop
+    - drivers
+
+- name: Install X11 server
+  pacman: name=xorg-server state=latest
+  tags: desktop

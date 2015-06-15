@@ -1,0 +1,4 @@
+---
+- include: configure_x11.yml
+- include: configure_lightdm.yml
+- include: configure_i3.yml

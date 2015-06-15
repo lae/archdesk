@@ -1,0 +1,7 @@
+---
+- name: Install LightDM and greeter
+  pacman: name={{ item }} state=latest
+  with_items:
+    - lightdm
+    - lightdm-gtk-greeter
+  tags: desktop
