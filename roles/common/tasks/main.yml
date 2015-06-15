@@ -1,0 +1,3 @@
+---
+- include: configure_locale.yml
+- include: configure_package_management.yml

@@ -1,0 +1,3 @@
+[submodule "library/ansible-makepkg"]
+	path = library/ansible-makepkg
+	url = https://github.com/gunzy83/ansible-makepkg.git

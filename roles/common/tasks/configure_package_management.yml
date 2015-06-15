@@ -1,0 +1,22 @@
+---
+- name: Configure pacman
+  template: src=pacman.conf.j2 dest=/etc/pacman.conf
+
+#- pacman: update_cache=yes
+
+- name: Install Arch Build System
+  pacman: name=abs state=latest update_cache=yes
+
+- name: Install development utilities
+  pacman: name={{ item }} state=latest
+  with_items: common_base_devel_pkgs
+
+- name: Change owner of /var/abs/local
+  file: path=/var/abs/local state=directory mode=0755 owner={{ common_user }}
+
+- stat: path=/usr/bin/aura
+  register: aura_install
+
+- name: Install Aura AUR helper
+  makepkg: name=aura-bin state=present
+  when: aura_install.stat.exists == False

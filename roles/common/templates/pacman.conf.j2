@@ -1,0 +1,44 @@
+# {{ ansible_managed }}
+#
+# /etc/pacman.conf
+#
+
+[options]
+#RootDir     = /
+#DBPath      = /var/lib/pacman/
+#CacheDir    = /var/cache/pacman/pkg/
+#LogFile     = /var/log/pacman.log
+#GPGDir      = /etc/pacman.d/gnupg/
+HoldPkg     = pacman glibc
+#XferCommand = /usr/bin/curl -C - -f %u > %o
+#CleanMethod = KeepInstalled
+#UseDelta    = 0.7
+Architecture = auto
+
+#IgnorePkg   =
+#IgnoreGroup =
+
+#NoUpgrade   =
+#NoExtract   =
+
+#UseSyslog
+Color
+#TotalDownload
+CheckSpace
+#VerbosePkgLists
+
+SigLevel    = Required DatabaseOptional
+LocalFileSigLevel = Optional
+#RemoteFileSigLevel = Required
+
+[core]
+Include = /etc/pacman.d/mirrorlist
+
+[extra]
+Include = /etc/pacman.d/mirrorlist
+
+[community]
+Include = /etc/pacman.d/mirrorlist
+
+[multilib]
+Include = /etc/pacman.d/mirrorlist
