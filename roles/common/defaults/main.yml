@@ -4,3 +4,9 @@ common_locales:
   - en_US.UTF-8 UTF-8
   - ja_JP.UTF-8 UTF-8
 common_selected_locale: en_US.UTF-8
+common_ntp_servers:
+  - server clock.sjc.he.net
+  - server 0.arch.pool.ntp.org
+  - server 1.arch.pool.ntp.org
+  - server 2.arch.pool.ntp.org
+  - server 3.arch.pool.ntp.org

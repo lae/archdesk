@@ -2,10 +2,8 @@
 - name: Configure pacman
   template: src=pacman.conf.j2 dest=/etc/pacman.conf
 
-#- pacman: update_cache=yes
-
 - name: Install Arch Build System
-  pacman: name=abs state=latest update_cache=yes
+  pacman: name=abs state=latest
 
 - name: Install development utilities
   pacman: name={{ item }} state=latest

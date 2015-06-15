@@ -1,3 +1,6 @@
 ---
 - name: regenerate locales
   command: locale-gen
+
+- name: restart ntp
+  service: name=ntpd state=restarted

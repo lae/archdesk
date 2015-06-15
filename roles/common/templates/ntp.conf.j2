@@ -1,0 +1,11 @@
+# {{ ansible_managed }}
+# /etc/ntp.conf, configuration for ntpd; see ntp.conf(5) for help
+{% for server in common_ntp_servers %}
+{{ server }}
+{% endfor %}
+
+restrict default kod limited nomodify nopeer noquery notrap
+restrict 127.0.0.1
+restrict ::1
+
+driftfile /var/lib/ntp/ntp.drift

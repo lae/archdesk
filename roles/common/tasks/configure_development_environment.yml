@@ -1,0 +1,43 @@
+---
+- name: Install development/shell packages
+  pacman: name={{ item }} state=latest
+  with_items:
+    - keychain
+    - screen
+    - git
+    - python
+    - python-virtualenvwrapper
+    - python-pip
+    - python2-pip
+
+- name: Support 256 colors by default
+  lineinfile:
+    dest: /etc/bash.bashrc
+    line: "export TERM=xterm-256color"
+    regexp: "^export TERM="
+
+- name: Configure user's bash runtime
+  template: src=bashrc.j2 dest="~{{ common_user }}/.bashrc"
+  sudo_user: "{{ common_user }}"
+
+- name: Checkout rbenv
+  git:
+    repo: https://github.com/sstephenson/rbenv.git
+    dest: "~{{ common_user }}/.rbenv"
+    depth: 1
+  sudo_user: "{{ common_user }}"
+
+- name: Checkout ruby-build for rbenv
+  git:
+    repo: https://github.com/sstephenson/ruby-build.git
+    dest: "~{{ common_user }}/.rbenv/plugins/ruby-build"
+    depth: 1
+  sudo_user: "{{ common_user }}"
+
+- name: Checkout rbenv-gem-rehash
+  git:
+    repo: https://github.com/sstephenson/rbenv-gem-rehash.git
+    dest: "~{{ common_user }}/.rbenv/plugins/rbenv-gem-rehash"
+    depth: 1
+  sudo_user: "{{ common_user }}"
+
