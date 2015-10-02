@@ -4,6 +4,17 @@
   with_items:
     - keychain
     - screen
+    - wget
+    - mtr
+    - traceroute
+    - dnsutils
+    - pkgfile
+    - "net-tools"
+    - unzip
+    - pwgen
+    - moreutils
+    - nmap
+    - whois
 
 - name: Ensure profile.d exists
   file:
@@ -28,6 +39,13 @@
 
 - name: Configure user's bash aliases
   template: src=bash_aliases.j2 dest="~{{ common_user }}/.bash_aliases"
+  sudo_user: "{{ common_user }}"
+
+- name: Ensure user's bin directory exists
+  file:
+    path: "~{{ common_user }}/bin"
+    state: directory
+    mode: 0755
   sudo_user: "{{ common_user }}"
 
 # vim:ft=ansible

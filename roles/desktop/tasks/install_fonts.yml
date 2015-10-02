@@ -1,0 +1,15 @@
+---
+- name: Install fonts from package repos
+  pacman: name={{ item }} state=latest
+  with_items:
+    - "ttf-dejavu"
+    - "ttf-freefont"
+
+- name: Install fonts from AUR
+  shell: "aura -Qs {{ item }} || aura -A {{ item }} --noconfirm"
+  with_items:
+    - "ttf-andika"
+    - "ttf-noto"
+    - "ttf-migu"
+
+# vim:ft=ansible

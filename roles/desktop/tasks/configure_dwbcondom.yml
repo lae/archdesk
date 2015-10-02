@@ -1,0 +1,28 @@
+---
+- name: Install dwb/privoxy
+  pacman: name={{ item }} state=latest
+  with_items:
+    - dwb
+    - privoxy
+
+- name: Copy dwbcondom
+  copy:
+    src: dwbcondom.sh
+    dest: "~{{ common_user }}/bin/dwbcondom"
+    mode: 0755
+  sudo_user: "{{ common_user }}"
+
+- name: Copy Privoxy settings
+  template:
+    src: privoxy-config.j2
+    dest: /etc/privoxy/config
+  notify:
+    - restart privoxy
+
+- name: Start Privoxy
+  service:
+    name: privoxy
+    state: started
+    enabled: yes
+
+# vim:ft=ansible

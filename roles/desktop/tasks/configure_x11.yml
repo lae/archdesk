@@ -17,5 +17,14 @@
     - drivers
   when: "has_nvidia.rc == 0"
 
-- name: Install X11 server
-  pacman: name=xorg-server state=latest
+- name: Install X11 server and related packages
+  pacman: name=xorg-{{ item }} state=latest
+  with_items:
+    - server
+    - xrdb
+    - xrandr
+    - xprop
+    - xset
+    - xwininfo
+    - xkill
+    - xauth

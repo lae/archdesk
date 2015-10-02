@@ -1,0 +1,50 @@
+! {{ ansible_managed }}
+!*background:    #0f0f0f
+!*foreground:    #afafaf
+*cursorColor:   #7f0fb7
+
+*color0:        #0f0f0f
+*color8:        #2f2f2f
+*color1:        #a70037
+*color9:        #df1f5f
+*color2:        #6f9f0f
+*color10:       #7fcf00
+*color3:        #ffcf0f
+*color11:       #ff9f2f
+*color4:        #2f2f9f
+*color12:       #6f6fef
+*color5:        #a70757
+*color13:       #df6f9f
+*color6:        #2f8fcf
+*color14:       #4fafef
+*color7:        #cfcfcf
+*color15:       #ffffff
+
+! rxvt-unicode ---------------------------------------------------------------
+
+urxvt*font:     xft::migu 2m:pixelsize=12
+! urxvt*font:     xft:bitstream vera sans mono:pixelsize=11
+
+urxvt*internalBorder:     2
+urxvt*inheritPixmap:      false
+urxvt*depth:              32
+urxvt*saveLines:          32767
+urxvt*visualBell:         true
+urxvt*scrollTtyKeypress:  true
+urxvt*scrollWithBuffer:   false
+urxvt*scrollTtyOutput:    false
+urxvt*scrollBar:          false
+!urxvt*cursorColor:        #ffcc00
+urxvt*termName:           rxvt
+urxvt*secondaryScroll:    true
+urxvt*perl-lib:           /usr/lib/urxvt/perl/
+urxvt*perl-ext-common:    default,matcher
+urxvt*url-launcher:       /home/{{ common_user }}/bin/dwbcondom
+urxvt*matcher.button:     1
+urxvt*background:         rgba:1111/1111/1111/bbbb
+urxvt*foreground:         #afafaf
+
+URxvt.keysym.M-Down:        \033[1;5B
+URxvt.keysym.M-Up:          \033[1;5A
+URxvt.keysym.M-Left:        \033[1;5D
+URxvt.keysym.M-Right:       \033[1;5C

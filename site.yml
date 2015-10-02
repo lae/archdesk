@@ -5,4 +5,6 @@
 
   roles:
     - common
-    - desktop
+    - { role: desktop, tags: desktop }
+
+# vim:ft=ansible

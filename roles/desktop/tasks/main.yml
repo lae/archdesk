@@ -2,3 +2,6 @@
 - include: configure_x11.yml
 - include: configure_lightdm.yml
 - include: configure_i3.yml
+- include: install_fonts.yml
+- include: configure_graphical_shell.yml
+- include: configure_dwbcondom.yml

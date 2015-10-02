@@ -1,0 +1,6 @@
+---
+- name: restart privoxy
+  service: name=privoxy state=restarted
+
+- name: reload systemd files
+  command: systemctl daemon-reload

@@ -1,0 +1,15 @@
+---
+- name: Install terminal and related graphical tools
+  pacman: name={{ item }} state=latest
+  with_items:
+    - "rxvt-unicode"
+    - scrot
+
+- name: Copy .Xresources
+  template:
+    src: Xresources.j2
+    dest: "~{{ common_user }}/.Xresources"
+    mode: 0644
+  sudo_user: "{{ common_user }}"
+
+# vim:ft=ansible
