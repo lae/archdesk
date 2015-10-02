@@ -10,3 +10,7 @@ common_ntp_servers:
   - server 1.arch.pool.ntp.org
   - server 2.arch.pool.ntp.org
   - server 3.arch.pool.ntp.org
+
+common_sysstat_retention_in_days: 365
+common_sysstat_compress_after_in_days: 14
+common_sysstat_directory: /var/log/sysstat

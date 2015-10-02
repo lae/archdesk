@@ -12,3 +12,5 @@
 - name: Enable and start the NTP service
   service: name=ntpd state=started enabled=yes
   tags: ntp
+
+# vim:ft=ansible

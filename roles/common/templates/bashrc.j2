@@ -3,10 +3,19 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-export HISTCONTROL=ignoreboth
-export HISTSIZE=65536
+# Alias definitions.
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
 
-shopt -s histappend
+# Load profiles from /etc/profile.d
+if test -d /etc/profile.d/; then
+    for profile in /etc/profile.d/*.sh; do
+        test -r "$profile" && . "$profile"
+    done
+    unset profile
+fi
+
 shopt -s checkwinsize
 
 export PERL_LOCAL_LIB_ROOT="$PERL_LOCAL_LIB_ROOT:$HOME/perl5";
@@ -14,10 +23,10 @@ export PERL_MB_OPT="--install_base $HOME/perl5";
 export PERL_MM_OPT="INSTALL_BASE=$HOME/perl5";
 export PERL5LIB="$HOME/perl5/lib/perl5:$PERL5LIB";
 
-for addpath in "$HOME/.rbenv/bin" "$HOME/bin" "$HOME/perl5/bin" "$HOME/.cabal/bin"; do
+for prependpath in "$HOME/.rbenv/bin" "$HOME/bin" "$HOME/perl5/bin" "$HOME/.cabal/bin"; do
   case ":$PATH:" in
-    *":$addpath:"*) :;;
-    *) export PATH="$addpath:$PATH";;
+    *":$prependpath:"*) :;;
+    *) export PATH="$prependpath:$PATH";;
   esac
 done
 
@@ -25,6 +34,7 @@ eval "$(rbenv init -)"
 
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/projects
+# consider lazy loader, but tab completion doesn't work initially
 source /usr/bin/virtualenvwrapper.sh
 
 /usr/bin/keychain --agents ssh --nogui --timeout 60

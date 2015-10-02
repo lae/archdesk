@@ -18,3 +18,5 @@
 - name: Install Aura AUR helper
   makepkg: name=aura-bin state=present
   when: aura_install.stat.exists == False
+
+# vim:ft=ansible

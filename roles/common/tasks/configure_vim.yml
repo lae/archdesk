@@ -8,3 +8,5 @@
 
 - name: Copy vim configuration
   template: src=vimrc.j2 dest=/etc/vimrc
+
+# vim:ft=ansible

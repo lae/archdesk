@@ -1,0 +1,33 @@
+---
+- name: Install shell packages
+  pacman: name={{ item }} state=latest
+  with_items:
+    - keychain
+    - screen
+
+- name: Ensure profile.d exists
+  file:
+    path: /etc/profile.d
+    state: directory
+
+- name: Add bash history settings
+  copy:
+    src: history.sh
+    dest: /etc/profile.d/history.sh
+    mode: 0755
+
+- name: Add TERM fix script
+  copy:
+    src: fixterm.sh
+    dest: /etc/profile.d/fixterm.sh
+    mode: 0755
+
+- name: Configure user's bash runtime
+  template: src=bashrc.j2 dest="~{{ common_user }}/.bashrc"
+  sudo_user: "{{ common_user }}"
+
+- name: Configure user's bash aliases
+  template: src=bash_aliases.j2 dest="~{{ common_user }}/.bash_aliases"
+  sudo_user: "{{ common_user }}"
+
+# vim:ft=ansible

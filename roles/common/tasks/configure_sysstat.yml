@@ -1,0 +1,20 @@
+---
+- name: Create sysstat storage directory
+  file:
+    path: /var/log/sysstat
+    state: directory
+    mode: 0755
+
+- name: Copy sysstat configuration
+  template:
+    src: sysstat.j2
+    dest: /etc/conf.d/sysstat
+    mode: 0644
+
+- name: Enable and start sysstat service
+  service:
+    name: sysstat
+    state: started
+    enabled: yes
+
+# vim:ft=ansible

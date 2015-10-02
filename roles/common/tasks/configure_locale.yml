@@ -6,3 +6,5 @@
 
 - name: "Specify primary locale"
   template: src=locale.conf.j2 dest=/etc/locale.conf
+
+# vim:ft=ansible

@@ -6,6 +6,8 @@
 - include: configure_locale.yml
 - include: configure_package_management.yml tags=pkg
 - include: configure_ntp.yml tags=ntp
-- include: configure_vim.yml tags=vim,dev
-- include: configure_development_environment.yml tags=dev
+- include: configure_sysstat.yml tags=ntp
+- include: configure_environment.yml tags=env
+- include: configure_vim.yml tags=vim,dev,env
+- include: configure_development_environment.yml tags=dev,env
 - include: add_sshkey.yml tags=ssh
