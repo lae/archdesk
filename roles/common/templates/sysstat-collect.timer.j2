@@ -1,0 +1,15 @@
+# {{ ansible_managed }}
+# /usr/lib/systemd/system/sysstat-collect.timer
+# (C) 2014 Tomasz Torcz <tomek@pipebreaker.pl>
+#
+# sysstat-11.1.3 systemd unit file:
+#        Activates activity collector every {{ common_sysstat_collection_interval }} minutes
+
+[Unit]
+Description=Run system activity accounting tool every {{ common_sysstat_collection_interval }} minutes
+
+[Timer]
+OnCalendar=*:00/{{ common_sysstat_collection_interval }}
+
+[Install]
+WantedBy=sysstat.service

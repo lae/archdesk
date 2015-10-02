@@ -4,3 +4,9 @@
 
 - name: restart ntp
   service: name=ntpd state=restarted
+
+- name: reload systemd files
+  command: systemctl daemon-reload
+
+- name: restart sysstat timer
+  service: name=sysstat-collect.timer state=restarted

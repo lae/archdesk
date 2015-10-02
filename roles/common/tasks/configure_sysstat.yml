@@ -22,6 +22,14 @@
     dest: /etc/conf.d/sysstat
     mode: 0644
 
+- name: Copy sysstat-collect.timer
+  template:
+    src: sysstat-collect.timer.j2
+    dest: /usr/lib/systemd/system/sysstat-collect.timer
+  notify:
+    - reload systemd files
+    - restart sysstat timer
+
 - name: Enable and start sysstat service
   service:
     name: sysstat

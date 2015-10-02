@@ -14,3 +14,4 @@ common_ntp_servers:
 common_sysstat_retention_in_days: 365
 common_sysstat_compress_after_in_days: 14
 common_sysstat_directory: /var/log/sysstat
+common_sysstat_collection_interval: 4
