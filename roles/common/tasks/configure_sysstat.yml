@@ -4,9 +4,17 @@
 
 - name: Create sysstat storage directory
   file:
-    path: /var/log/sysstat
+    path: "{{ common_sysstat_directory }}"
     state: directory
     mode: 0755
+
+- name: Symlink /var/log/sa to sysstat directory
+  file:
+    src: "{{ common_sysstat_directory }}"
+    path: /var/log/sa
+    state: link
+    force: yes
+  when: "common_sysstat_directory != '/var/log/sa'"
 
 - name: Copy sysstat configuration
   template:
