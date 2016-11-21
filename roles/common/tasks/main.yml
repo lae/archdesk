@@ -1,8 +1,4 @@
 ---
-- name: Update pacman cache
-  pacman: update_cache=yes
-  tags: always
-
 - include: configure_locale.yml
 - include: configure_package_management.yml tags=pkg
 - include: configure_ntp.yml tags=ntp

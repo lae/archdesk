@@ -4,6 +4,11 @@
     src: pacman.conf.j2
     dest: /etc/pacman.conf
 
+- name: Update pacman cache
+  pacman:
+    update_cache: yes
+  tags: always
+
 - name: Install Arch Build System
   pacman:
     name: abs
