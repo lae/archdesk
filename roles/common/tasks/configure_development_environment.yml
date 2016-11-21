@@ -7,7 +7,7 @@
     - python-virtualenvwrapper
     - python-pip
     - python2-pip
-    - rust
+    - rustup
 
 - name: Checkout rbenv
   git:
