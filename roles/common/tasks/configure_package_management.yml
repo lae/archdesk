@@ -49,13 +49,13 @@
     args:
       chdir: /var/abs/local/aura-bin
       creates: "aura-bin-{{ __aura_bin_version.stdout }}-x86_64.pkg.tar.xz"
+    become_user: "{{ common_user }}"
 
-  become_user: "{{ common_user }}"
+  - name: Install aura-bin
+    pacman:
+      name: "/var/abs/local/aura-bin/aura-bin-{{ __aura_bin_version.stdout }}-x86_64.pkg.tar.xz"
+      state: present
+
   when: __aura_checkout.changed
-
-- name: Install aura-bin
-  pacman:
-    name: "/var/abs/local/aura-bin/aura-bin-{{ __aura_bin_version.stdout }}-x86_64.pkg.tar.xz"
-    state: present
 
 # vim:ft=ansible
