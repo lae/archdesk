@@ -1,4 +1,4 @@
 [submodule "library/ansible-makepkg"]
 	path = library/ansible-makepkg
 	url = https://github.com/BaxterStockman/ansible-makepkg.git
-	branch = aur_url_fix
+	branch = master
