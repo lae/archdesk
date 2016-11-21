@@ -1,6 +1,8 @@
 ---
 - name: Install fonts from package repos
-  pacman: name={{ item }} state=latest
+  pacman:
+    name: "{{ item }}"
+    state: latest
   with_items:
     - "ttf-dejavu"
     - "ttf-freefont"

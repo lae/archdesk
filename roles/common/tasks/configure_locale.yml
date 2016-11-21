@@ -1,10 +1,14 @@
 ---
-- name: "Install selected locales"
-  template: src=locale.gen.j2 dest=/etc/locale.gen
+- name: Install selected locales
+  template:
+    src: locale.gen.j2
+    dest: /etc/locale.gen
   notify:
     - regenerate locales
 
-- name: "Specify primary locale"
-  template: src=locale.conf.j2 dest=/etc/locale.conf
+- name: Specify primary locale
+  template:
+    src: locale.conf.j2
+    dest: /etc/locale.conf
 
 # vim:ft=ansible

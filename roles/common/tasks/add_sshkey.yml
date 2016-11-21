@@ -7,7 +7,7 @@
     dest: "~{{ common_user }}/.ssh/id_ed25519"
     mode: 0600
     backup: yes
-  sudo_user: "{{ common_user }}"
+  become_user: "{{ common_user }}"
 
 - name: Copy EdDSA SSH pubkey
   copy:
@@ -15,4 +15,4 @@
     dest: "~{{ common_user }}/.ssh/id_ed25519.pub"
     mode: 0600
     backup: yes
-  sudo_user: "{{ common_user }}"
+  become_user: "{{ common_user }}"

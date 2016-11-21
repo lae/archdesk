@@ -1,6 +1,8 @@
 ---
 - name: Install sysstat
-  pacman: name=sysstat state=latest
+  pacman:
+    name: sysstat
+    state: latest
 
 - name: Create sysstat storage directory
   file:

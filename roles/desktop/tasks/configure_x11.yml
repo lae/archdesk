@@ -5,7 +5,9 @@
   register: has_nvidia
 
 - name: Install NVidia 340.xx drivers
-  pacman: name={{ item }} state=latest
+  pacman:
+    name: "{{ item }}"
+    state: latest
   with_items:
     - nvidia-340xx
     - nvidia-340xx-libgl
@@ -18,7 +20,9 @@
   when: "has_nvidia.rc == 0"
 
 - name: Install X11 server and related packages
-  pacman: name=xorg-{{ item }} state=latest
+  pacman:
+    name: "xorg-{{ item }}"
+    state: latest
   with_items:
     - server
     - xrdb

@@ -1,6 +1,8 @@
 ---
 - name: Install development packages
-  pacman: name={{ item }} state=latest
+  pacman:
+    name: "{{ item }}"
+    state: latest
   with_items:
     - git
     - python
@@ -18,7 +20,7 @@
     - { repo: "https://github.com/sstephenson/rbenv.git", ".rbenv" }
     - { repo: "https://github.com/sstephenson/ruby-build.git", ".rbenv/plugins/ruby-build" }
     - { repo: "https://github.com/sstephenson/rbenv-gem-rehash.git", ".rbenv/plugins/rbenv-gem-rehash" }
-  sudo_user: "{{ common_user }}"
+  become_user: "{{ common_user }}"
   tags:
     - ruby
     - rbenv

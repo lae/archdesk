@@ -1,16 +1,22 @@
 ---
 - name: Install NTP
-  pacman: name=ntp
+  pacman:
+    name: ntp
   tags: ntp
 
 - name: Configure the NTP service
-  template: src=ntp.conf.j2 dest=/etc/ntp.conf
+  template:
+    src: ntp.conf.j2
+    dest: /etc/ntp.conf
   notify:
     - restart ntp
   tags: ntp
 
 - name: Enable and start the NTP service
-  service: name=ntpd state=started enabled=yes
+  service:
+    name: ntpd
+    state: started
+    enabled: yes
   tags: ntp
 
 # vim:ft=ansible

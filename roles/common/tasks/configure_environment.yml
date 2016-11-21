@@ -1,6 +1,8 @@
 ---
 - name: Install shell packages
-  pacman: name={{ item }} state=latest
+  pacman:
+    name: "{{ item }}"
+    state: latest
   with_items:
     - keychain
     - screen
@@ -42,18 +44,22 @@
     - unpackf
 
 - name: Configure user's bash runtime
-  template: src=bashrc.j2 dest="~{{ common_user }}/.bashrc"
-  sudo_user: "{{ common_user }}"
+  template:
+    src: bashrc.j2
+    dest: "~{{ common_user }}/.bashrc"
+  become_user: "{{ common_user }}"
 
 - name: Configure user's bash aliases
-  template: src=bash_aliases.j2 dest="~{{ common_user }}/.bash_aliases"
-  sudo_user: "{{ common_user }}"
+  template:
+    src: bash_aliases.j2
+    dest: "~{{ common_user }}/.bash_aliases"
+  become_user: "{{ common_user }}"
 
 - name: Ensure user's bin directory exists
   file:
     path: "~{{ common_user }}/bin"
     state: directory
     mode: 0755
-  sudo_user: "{{ common_user }}"
+  become_user: "{{ common_user }}"
 
 # vim:ft=ansible

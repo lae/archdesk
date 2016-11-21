@@ -1,6 +1,8 @@
 ---
 - name: Install dwb/privoxy
-  pacman: name={{ item }} state=latest
+  pacman:
+    name: "{{ item }}"
+    state: latest
   with_items:
     - dwb
     - privoxy
@@ -10,7 +12,7 @@
     src: dwbcondom.sh
     dest: "~{{ common_user }}/bin/dwbcondom"
     mode: 0755
-  sudo_user: "{{ common_user }}"
+  become_user: "{{ common_user }}"
 
 - name: Copy Privoxy settings
   template:

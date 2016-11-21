@@ -1,12 +1,18 @@
 ---
 - name: Install vim
-  pacman: name=vim-python3 state=latest
+  pacman:
+    name: vim-python3
+    state: latest
 
-# vim74 is probably subject to change on upgrades
+# vim80 is probably subject to change on upgrades
 - name: Copy jellybeans vim colour scheme
-  copy: src=jellybeans.vim dest=/usr/share/vim/vim74/colors/jellybeans.vim
+  copy:
+    src: jellybeans.vim
+    dest: /usr/share/vim/vim80/colors/jellybeans.vim
 
 - name: Copy vim configuration
-  template: src=vimrc.j2 dest=/etc/vimrc
+  template:
+    src: vimrc.j2
+    dest: /etc/vimrc
 
 # vim:ft=ansible

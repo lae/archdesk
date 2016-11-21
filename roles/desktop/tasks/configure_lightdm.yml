@@ -1,19 +1,28 @@
 ---
 - name: Install LightDM and greeter
-  pacman: name={{ item }} state=latest
+  pacman:
+    name: "{{ item }}"
+    state: latest
   with_items:
     - lightdm
     - lightdm-gtk-greeter
   tags: desktop
 
 - name: Configure LightDM
-  template: src=lightdm.conf.j2 dest=/etc/lightdm/lightdm.conf
+  template:
+    src: lightdm.conf.j2
+    dest: /etc/lightdm/lightdm.conf
   tags: desktop
 
 - name: Configure LightDM Greeter
-  template: src=lightdm-gtk-greeter.conf.j2 dest=/etc/lightdm/lightdm-gtk-greeter.conf
+  template:
+    src: lightdm-gtk-greeter.conf.j2
+    dest: /etc/lightdm/lightdm-gtk-greeter.conf
   tags: desktop
 
 - name: Enable and start LightDM
-  service: name=lightdm state=started enabled=yes
+  service:
+    name: lightdm
+    state: started
+    enabled: yes
   tags: desktop
