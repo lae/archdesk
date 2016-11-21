@@ -32,6 +32,7 @@
     repo: https://aur.archlinux.org/aura-bin.git
     dest: /var/abs/local/aura-bin
     accept_hostkey: yes
+  become_user: "{{ common_user }}"
   register: __aura_checkout
 
 - block:
@@ -46,6 +47,7 @@
     args:
       chdir: /var/abs/local/aura-bin
       creates: "aura-bin-{{ __aura_bin_version.stdout }}-x86_64.pkg.tar.xz"
+    become_user: "{{ common_user }}"
 
   - name: Install aura-bin
     pacman:
