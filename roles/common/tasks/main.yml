@@ -6,4 +6,3 @@
 - include: configure_environment.yml tags=env
 - include: configure_vim.yml tags=vim,dev,env
 - include: configure_development_environment.yml tags=dev,env
-- include: add_sshkey.yml tags=ssh
